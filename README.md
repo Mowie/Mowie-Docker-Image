@@ -1,28 +1,22 @@
-# docker-alpine-nginx-php7
-> Docker Nginx & PHP 7 image on the top of Alpine Linux.
+# Mowie Docker Image
 
-This image contains:
+This image puts the Mowie CMS in a dockercontainer to easily deploy it.
 
-- Alpine Linux v3.5
-- Nginx 1.11-alpine
-- PHP 7.1-fpm-alpine with common extensions
-- S6 (process supervisor)
-- Composer
-
-## Build
+# Usage
 
 ```sh
-docker build -t alpine-nginx-php7 .
-```
+docker run -p 8080:80 -v /path/to/apps:/var/www/apps -v /path/to/config:/var/www/config -v /path/to/content:/var/www/content mowie/mowie
 
-## Run
+### Ports
 
-```sh
-docker run --rm -ti -p 9080:80 alpine-nginx-php7
-```
+This image exposes port 80.
 
-## Bash
-```sh
-docker exec -it <containerId Or Name> bash
-```
+### Volumes
 
+This image has serveral volumes:
+
+* `/var/www/apps` to store apps
+* `/var/www/config` to store config
+* `/var/www/content` to store the contents of your website
+
+**You will (currently) need to re-copy apps into your apps-volume before running the installer due to docker's nature of overlaying data inside the container**
