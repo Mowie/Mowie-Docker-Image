@@ -6,6 +6,7 @@ This image puts the Mowie CMS in a dockercontainer to easily deploy it.
 
 ```sh
 docker run -p 8080:80 -v /path/to/apps:/var/www/apps -v /path/to/config:/var/www/config -v /path/to/content:/var/www/content mowie/mowie
+```
 
 ### Ports
 
