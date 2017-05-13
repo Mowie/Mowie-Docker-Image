@@ -19,6 +19,7 @@ This image has serveral volumes:
 * `/var/www/apps` to store apps
 * `/var/www/config` to store config
 * `/var/www/content` to store the contents of your website
+* `/var/session` to store session data across multiple containers
 
 **You will (currently) need to re-copy apps into your apps-volume before running the installer due to docker's nature of overlaying data inside the container**
 

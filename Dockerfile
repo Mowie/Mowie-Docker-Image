@@ -29,6 +29,11 @@ COPY conf/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY conf/php/php-fpm.conf /etc/php7/
 COPY conf/php/conf.d/php.ini /etc/php7/conf.d/zphp.ini
 
+VOLUME /var/www/apps
+VOLUME /var/www/config
+VOLUME /var/www/content
+VOLUME /var/session
+
 EXPOSE 80
 
 ENTRYPOINT ["/bin/s6-svscan", "/etc/services.d"]
