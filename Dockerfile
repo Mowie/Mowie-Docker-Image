@@ -4,7 +4,7 @@ MAINTAINER kolaente - mowie.cc
 ENV TZ "Europe/Berlin"
 
 RUN apk update && \
-    apk --no-cache add bash tzdata curl ca-certificates ssmtp mysql-client \
+    apk --no-cache add bash tzdata curl ca-certificates s6 ssmtp mysql-client \
     nginx nginx-mod-http-headers-more
 
 RUN ln -sf "/usr/share/zoneinfo/$TZ" /etc/localtime && \
