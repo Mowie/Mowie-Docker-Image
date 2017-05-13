@@ -1,10 +1,10 @@
 FROM alpine:3.5
-MAINTAINER joseluisq - https://github.com/joseluisq
+MAINTAINER kolaente - mowie.cc
 
 ENV TZ "Europe/Berlin"
 
 RUN apk update && \
-    apk --no-cache add bash tzdata curl ca-certificates s6 ssmtp mysql-client \
+    apk --no-cache add bash tzdata curl ca-certificates ssmtp mysql-client \
     nginx nginx-mod-http-headers-more
 
 RUN ln -sf "/usr/share/zoneinfo/$TZ" /etc/localtime && \
@@ -21,9 +21,6 @@ RUN rm -rf /var/cache/apk/* && \
     rm -f /etc/php7/php-fpm.d/www.conf && \
     touch /etc/php7/php-fpm.d/env.conf
 
-ENV COMPOSER_ALLOW_SUPERUSER 1
-RUN curl -sS https://getcomposer.org/installer | php -- --filename=/usr/local/bin/composer
-
 RUN rm -rf /var/www
 
 COPY www /var/www
@@ -32,8 +29,7 @@ COPY conf/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY conf/php/php-fpm.conf /etc/php7/
 COPY conf/php/conf.d/php.ini /etc/php7/conf.d/zphp.ini
 
-EXPOSE 80 443
+EXPOSE 80
 
 ENTRYPOINT ["/bin/s6-svscan", "/etc/services.d"]
 CMD []
-
