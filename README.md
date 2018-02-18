@@ -22,7 +22,8 @@ This image has serveral volumes:
 * `/var/session` to store session data across multiple containers
 
 **You will (currently) need to re-copy apps into your apps-volume before running the installer due to docker's nature of overlaying data inside the container**
+You can download the apps from [here](https://github.com/Mowie/Mowie/releases).
 
 # License
 
-Code copyright by 2017 Mowie and contributors. Code released under GPLv3.
+Code copyright by 2017-2018 Mowie and contributors. Code released under GPLv3.
