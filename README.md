@@ -24,6 +24,14 @@ This image has serveral volumes:
 **You will (currently) need to re-copy apps into your apps-volume before running the installer due to docker's nature of overlaying data inside the container**
 You can download the apps from [here](https://github.com/Mowie/Mowie/releases).
 
+# Docker compose
+
+You can find an example docker compose file in this repository to get you up and running quickly.
+
+To use it, you should first modify the `MYSQL_ROOT_PASSWORD` of the mariadb-container. Modify folders and ports as nessecary. Then 
+simply run `docker-compose up -d`. This will spin up an instance of Mowie with a mariadb instance which is reachable from the 
+mowie-container via `db`.
+
 # License
 
 Code copyright by 2017-2018 Mowie and contributors. Code released under GPLv3.
