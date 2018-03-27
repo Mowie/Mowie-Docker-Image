@@ -24,10 +24,13 @@ RUN rm -rf /var/cache/apk/* && \
 RUN rm -rf /var/www
 
 COPY www /var/www
+COPY www/apps /var/mowie/apps
+COPY www/content/.system /var/mowie/.system
 COPY conf/services.d /etc/services.d
 COPY conf/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY conf/php/php-fpm.conf /etc/php7/
 COPY conf/php/conf.d/php.ini /etc/php7/conf.d/zphp.ini
+COPY install.sh /var/mowie/install.sh
 
 VOLUME /var/www/apps
 VOLUME /var/www/config
@@ -36,5 +39,5 @@ VOLUME /var/session
 
 EXPOSE 80
 
-ENTRYPOINT ["/bin/s6-svscan", "/etc/services.d"]
+ENTRYPOINT ["./var/mowie/install.sh", "/bin/s6-svscan", "/etc/services.d"]
 CMD []
