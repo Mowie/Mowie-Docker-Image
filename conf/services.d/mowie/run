@@ -4,12 +4,13 @@
 # If they are, it copies new content into these folders.
 # The main reason for this script is docker's nature of overlaying container content when using volumes.
 
-if [ !"$(ls -A /var/www/apps)" ]; then
+if [ -z "$(ls -A -- /var/www/apps)" ]; then
 	cp -r /var/mowie/apps/* /var/www/apps/
+	echo "installed apps"
 fi
 
 mkdir -p /var/www/content/.system
-if [ !"$(ls -A /var/www/content/.system)" ]; then
+if [ -z "$(ls -A -- /var/www/content/.system)" ]; then
         cp -r /var/mowie/.system/* /var/www/content/.system/
+	echo "installed .system"
 fi
-
