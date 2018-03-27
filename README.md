@@ -1,6 +1,6 @@
 # Mowie Docker Image
 
-This image puts the Mowie CMS in a dockercontainer to easily deploy it.
+This image puts the Mowie CMS in a docker container to easily deploy it.
 
 # Usage
 
@@ -20,9 +20,6 @@ This image has serveral volumes:
 * `/var/www/config` to store config
 * `/var/www/content` to store the contents of your website
 * `/var/session` to store session data across multiple containers
-
-**You will (currently) need to re-copy apps into your apps-volume before running the installer due to docker's nature of overlaying data inside the container**
-You can download the apps from [here](https://github.com/Mowie/Mowie/releases).
 
 # Docker compose
 
