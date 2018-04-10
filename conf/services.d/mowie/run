@@ -4,13 +4,23 @@
 # If they are, it copies new content into these folders.
 # The main reason for this script is docker's nature of overlaying container content when using volumes.
 
-if [ -z "$(ls -A -- /var/www/apps)" ]; then
-	cp -r /var/mowie/apps/* /var/www/apps/
-	echo "installed apps"
-fi
+# Check if we have a lock file because we want the script to execute only once
+if [ ! -f /var/mowie/installed.lock ]; then
 
-mkdir -p /var/www/content/.system
-if [ -z "$(ls -A -- /var/www/content/.system)" ]; then
-        cp -r /var/mowie/.system/* /var/www/content/.system/
-	echo "installed .system"
+	# Copy apps
+	if [ -z "$(ls -A -- /var/www/apps)" ]; then
+		cp -r /var/mowie/apps/* /var/www/apps/
+		echo "installed apps"
+	fi
+
+	# Copy .system files
+	mkdir -p /var/www/content/.system
+	if [ -z "$(ls -A -- /var/www/content/.system)" ]; then
+		cp -r /var/mowie/.system/* /var/www/content/.system/
+		echo "installed .system"
+	fi
+	
+	touch /var/mowie/installed.lock # create the lockfile
+	chown nginx:nginx /var/www -R # Reset permissions
+
 fi
