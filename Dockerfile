@@ -36,7 +36,7 @@ VOLUME /var/www/config
 VOLUME /var/session
 
 RUN chown nginx:nginx /var/www -R && \
-chown nginx:nginx /var/session -Rv
+chown nginx:nginx /var/session -R
 
 
 EXPOSE 80
