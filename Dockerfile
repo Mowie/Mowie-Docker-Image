@@ -33,11 +33,11 @@ COPY conf/php/conf.d/php.ini /etc/php7/conf.d/zphp.ini
 
 VOLUME /var/www/apps
 VOLUME /var/www/config
-VOLUME /var/www/content
-
-RUN chown nginx:nginx /var/www -R
-
 VOLUME /var/session
+
+RUN chown nginx:nginx /var/www -R && \
+chown nginx:nginx /var/session -Rv
+
 
 EXPOSE 80
 
